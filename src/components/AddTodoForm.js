@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // Used to dispatch an action
 import { useDispatch } from 'react-redux';
 // Import actions
-import { addTodo } from '../redux/todoSlice';
+import { addTodoAsync } from '../redux/todoSlice';
 
 const AddTodoForm = () => {
   const [value, setValue] = useState('');
@@ -12,7 +12,7 @@ const AddTodoForm = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     dispatch(
-      addTodo({
+      addTodoAsync({
         title: value,
       })
     );

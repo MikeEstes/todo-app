@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import TodoItem from './TodoItem';
 // Used to read data from the store
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { getTodosAsync } from '../redux/todoSlice';
 
 const TodoList = () => {
+  const dispatch = useDispatch();
   const todos = useSelector((state) => state.todos);
 
+  useEffect(() => {
+    dispatch(getTodosAsync());
+  }, [dispatch]);
   return (
     <ul className='list-group'>
       {todos.map((todo) => (
